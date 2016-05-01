@@ -19,6 +19,13 @@
 	<?php echo $resultText;?>
 </div>
 <a href='addphotoform.php'> Add New Photo </a>;
+<?php
+if($admin == 1) {
+	echo "<a href='admin.php'>Admin Pannel</a>";
+}
+
+
+?>
 
 </body>
 </html>

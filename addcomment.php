@@ -17,7 +17,7 @@ if(isset($_POST["submit"]))
 
     //sanitize photoID input
     $photoID = stripcslashes($photoID);
-    $photoID = mysqli_real_escape_string($db, $photoID);
+    $photoID = mysqli_real_escape_string($db,$photoID);
     $photoID =htmlspecialchars($photoID);
 
     $sql="SELECT userID FROM users WHERE username='$name'";
