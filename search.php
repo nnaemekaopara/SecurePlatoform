@@ -4,6 +4,7 @@ if(isset($_POST["submit"]))
 {
     $name = $_POST["username"];
 
+
     $sql="SELECT userID FROM users WHERE username='$name'";
     $result=mysqli_query($db,$sql);
     $row=mysqli_fetch_assoc($result);

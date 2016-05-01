@@ -2,10 +2,20 @@
 $msg = "";
 if(isset($_POST["submit"]))
 {
+    //Define and Sanitize username input
     $username = mysqli_real_escape_string($db, $_POST['username']);
-    $email = mysqli_real_escape_string($db, $_POST['email']);
-    $password = md5(mysqli_real_escape_string($db, $_POST['password']));
+    $username = stripcslashes($username);
+    $username =htmlspecialchars($username);
 
+    //Define and Sanitize email input
+    $email = mysqli_real_escape_string($db, $_POST['email']);
+    $email = stripcslashes($email);
+    $email =htmlspecialchars($email);
+
+    //Define and Sanitize password input
+    $password = md5(mysqli_real_escape_string($db, $_POST['password']));
+    $password = stripcslashes($password);
+    $password =htmlspecialchars($password);
 
 
     $sql="SELECT email FROM users WHERE email='$email'";

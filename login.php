@@ -10,12 +10,23 @@
 			$error = "Both fields are required.";
 		}else
 		{
-			// Define $username and $password
+
+			//sanitize username input
 			$username = mysqli_real_escape_string($db, $_POST['username']);
+			$username = stripcslashes($username);
+			$username = htmlspecialchars($username);
+
+			// Define and sanitize password input
 			$password = md5(mysqli_real_escape_string($db, $_POST['password']));
+			$password = stripcslashes($password);
+			$password = htmlspecialchars($password);
+
+			// Default values
+			$total_failed_login = 3;
+			$lockout_time       = 15;
+			$account_locked     = false;
 
 
-			
 			//Check username and password from database
 			$sql="SELECT userID FROM users WHERE username='$username' and password='$password'";
 			$result=mysqli_query($db,$sql);

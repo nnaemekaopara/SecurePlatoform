@@ -21,7 +21,7 @@
 		<input type="text" name="username" placeholder="username" /><br><br>
 		<input type="submit" name="submit" value="search" />
 	</form>
-	<div class="error"><?php echo $error;?></div>
+
 </div>
 
 <div id="photolist">

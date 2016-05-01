@@ -10,6 +10,16 @@ if(isset($_POST["submit"]))
     $photoID = $_POST["photoID"];
     $name = $_SESSION["username"];
 
+    //sanitize desc input
+    $desc = stripcslashes($desc);
+    $desc = mysqli_real_escape_string($desc);
+    $desc =htmlspecialchars($desc);
+
+    //sanitize photoID input
+    $photoID = stripcslashes($photoID);
+    $photoID = mysqli_real_escape_string($photoID);
+    $photoID =htmlspecialchars($photoID);
+
     $sql="SELECT userID FROM users WHERE username='$name'";
     $result=mysqli_query($db,$sql);
     $row=mysqli_fetch_array($result,MYSQLI_ASSOC);

@@ -16,4 +16,23 @@ if(!isset($user_check))
 {
 header("Location: index.php");
 }
+
+if(isset($_SESSION['timeout']))
+{
+    $cur_time = time()- $_SESSION['timeout'];
+   // echo $cur_time;
+    if($cur_time > 600)
+    {
+        session_destroy();
+        header("Location: index.php");
+    }
+    else
+    {
+        $_SESSION['timeout'] = time();
+    }
+}
+else{
+
+    $_SESSION['timeout'] = time();
+}
 ?>
