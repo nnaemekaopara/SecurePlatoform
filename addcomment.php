@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include("connection.php"); //Establishing connection with our database
 
 $msg = ""; //Variable for storing our errors.
@@ -12,12 +12,12 @@ if(isset($_POST["submit"]))
 
     //sanitize desc input
     $desc = stripcslashes($desc);
-    $desc = mysqli_real_escape_string($desc);
+    $desc = mysqli_real_escape_string($db,$desc);
     $desc =htmlspecialchars($desc);
 
     //sanitize photoID input
     $photoID = stripcslashes($photoID);
-    $photoID = mysqli_real_escape_string($photoID);
+    $photoID = mysqli_real_escape_string($db, $photoID);
     $photoID =htmlspecialchars($photoID);
 
     $sql="SELECT userID FROM users WHERE username='$name'";
